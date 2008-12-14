@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups>
+    <group name="admins">
+        <member username="rms" />
+    </group>
+    <group name="developers">
+        <member username="rms" />
+        <member username="linus" />
+    </group>
+    <group name="trolls">
+        <member username="sballmer" />
+    </group>
+    <group name="python">
+        <!-- An empty group -->
+    </group>
+    <group name="php">
+        <!-- An empty group -->
+    </group>
+</groups>

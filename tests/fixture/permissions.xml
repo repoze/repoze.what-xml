@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+    <permission name="edit-site">
+        <group name="admins" />
+        <group name="developers" />
+    </permission>
+    <permission name="commit">
+        <group name="developers" />
+    </permission>
+    <permission name="see-site">
+        <group name="trolls" />
+    </permission>
+</permissions>
