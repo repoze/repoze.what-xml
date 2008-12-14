@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <groups>
     <group name="admins">
-        <member username="rms" />
+        <member name="rms" />
     </group>
     <group name="developers">
-        <member username="rms" />
-        <member username="linus" />
+        <member name="rms" />
+        <member name="linus" />
     </group>
     <group name="trolls">
-        <member username="sballmer" />
+        <member name="sballmer" />
     </group>
     <group name="python">
         <!-- An empty group -->

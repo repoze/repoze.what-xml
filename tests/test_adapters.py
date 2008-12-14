@@ -29,29 +29,28 @@ fixtures = os.path.join(here, 'fixture')
 
 class BaseXmlAdapterTester(unittest.TestCase):
     
-    def _duplicate_file(self):
+    def _setup_xml_adapter(self):
         tmp_filename = self.filename + '.tmp'
         original = os.path.join(fixtures, self.filename)
         self.tmp_file = os.path.join(fixtures, tmp_filename)
         copy(original, self.tmp_file)
+        # Setting up the XML adapter:
+        self.adapter = self.adapter_class(self.tmp_file)
     
     def tearDown(self):
         os.remove(self.tmp_file)
-    
-    def test_file_is_defined(self):
-        self.assertTrue(self.adapter.file)
 
 
 class TestXMLGroupsAdapter(GroupsAdapterTester, BaseXmlAdapterTester):
     
     filename = 'groups.xml'
     
-    adapter = XMLGroupsAdapter
+    adapter_class = XMLGroupsAdapter
     
     def setUp(self):
         super(TestXMLGroupsAdapter, self).setUp()
-        self._duplicate_file()
-        self.adapter = XMLGroupsAdapter(self.tmp_file)
+        self._setup_xml_adapter()
+        
 
 
 class TestXMLPermissionsAdapter(PermissionsAdapterTester,
@@ -59,7 +58,8 @@ class TestXMLPermissionsAdapter(PermissionsAdapterTester,
     
     filename = 'permissions.xml'
     
+    adapter_class = XMLPermissionsAdapter
+    
     def setUp(self):
         super(TestXMLPermissionsAdapter, self).setUp()
-        self._duplicate_file()
-        self.adapter = XMLPermissionsAdapter(self.tmp_file)
+        self._setup_xml_adapter()
