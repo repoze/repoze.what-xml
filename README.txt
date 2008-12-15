@@ -9,8 +9,6 @@ Supported source formats
 
 A sample group source may look like this:
 
-.. code-block:: xml
-
     <?xml version="1.0" encoding="UTF-8"?>
     <groups>
         <group name="admins">
@@ -32,8 +30,6 @@ A sample group source may look like this:
     </groups>
 
 A sample permission source may look like this:
-
-.. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <permissions>
