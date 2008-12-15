@@ -28,6 +28,7 @@ fixtures = os.path.join(here, 'fixture')
 
 
 class _BaseXmlAdapterTester(unittest.TestCase):
+    """The base test case for the XML source adapters"""
     
     def _setup_xml_adapter(self):
         tmp_filename = self.filename + '.tmp'
@@ -61,6 +62,7 @@ class _BaseXmlAdapterTester(unittest.TestCase):
 
 
 class TestXMLGroupsAdapter(GroupsAdapterTester, _BaseXmlAdapterTester):
+    """Test case for the XML group source adapter"""
     
     filename = 'groups.xml'
     
@@ -73,6 +75,7 @@ class TestXMLGroupsAdapter(GroupsAdapterTester, _BaseXmlAdapterTester):
 
 class TestXMLPermissionsAdapter(PermissionsAdapterTester,
                                 _BaseXmlAdapterTester):
+    """Test case for the XML permission source adapter"""
     
     filename = 'permissions.xml'
     

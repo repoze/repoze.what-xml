@@ -23,8 +23,16 @@ __all__ = ['XMLGroupsAdapter', 'XMLPermissionsAdapter']
 
 
 class _BaseXMLAdapter(BaseSourceAdapter):
+    """The base class for XML source adapters"""
     
     def __init__(self, file, **kwargs):
+        """
+        Create an XML source adapter for ``file``.
+        
+        :param file: The path to the XML file or a :class:`file` object.
+        :type file: ``str`` or ``file``
+        
+        """
         self.file = file
         self.document = parse(file)
         self.is_writable = True
@@ -125,6 +133,8 @@ class _BaseXMLAdapter(BaseSourceAdapter):
 
 
 class XMLGroupsAdapter(_BaseXMLAdapter):
+    """The XML group source adapter"""
+    
     elements = {
         'section': 'group',
         'item': 'member'
@@ -137,6 +147,8 @@ class XMLGroupsAdapter(_BaseXMLAdapter):
 
 
 class XMLPermissionsAdapter(_BaseXMLAdapter):
+    """The XML permission source adapter"""
+    
     elements = {
         'section': 'permission',
         'item': 'group'

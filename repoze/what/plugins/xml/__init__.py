@@ -13,7 +13,7 @@
 #
 ##############################################################################
 
-"""The repoze.what XML plugin"""
+"""The repoze.what XML plugin."""
 
 from repoze.what.plugins.xml.adapters import XMLGroupsAdapter, \
                                              XMLPermissionsAdapter
