@@ -27,7 +27,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 fixtures = os.path.join(here, 'fixture')
 
 
-class BaseXmlAdapterTester(unittest.TestCase):
+class _BaseXmlAdapterTester(unittest.TestCase):
     
     def _setup_xml_adapter(self):
         tmp_filename = self.filename + '.tmp'
@@ -39,9 +39,28 @@ class BaseXmlAdapterTester(unittest.TestCase):
     
     def tearDown(self):
         os.remove(self.tmp_file)
+        
+    def test_open_file_works(self):
+        open_file = open(self.tmp_file, 'rw+')
+        adapter = self.adapter_class(open_file)
+        adapter.create_section('i_dont_exist')
+        open_file.close()
+    
+    def test_file_really_is_updated(self):
+        sections = self.adapter.get_all_sections()
+        self.adapter.create_section('helloworld')
+        sections['helloworld'] = set()
+        # Testing it with a new adapter:
+        new_adapter = self.adapter_class(self.tmp_file)
+        self.assertEqual(sections, new_adapter.get_all_sections())
+    
+    def test_unicode_support(self):
+        sections = self.adapter.get_all_sections()
+        self.adapter.create_section(u'caraqueños')
+        self.adapter.include_item(u'caraqueños', u'maría')
 
 
-class TestXMLGroupsAdapter(GroupsAdapterTester, BaseXmlAdapterTester):
+class TestXMLGroupsAdapter(GroupsAdapterTester, _BaseXmlAdapterTester):
     
     filename = 'groups.xml'
     
@@ -50,11 +69,10 @@ class TestXMLGroupsAdapter(GroupsAdapterTester, BaseXmlAdapterTester):
     def setUp(self):
         super(TestXMLGroupsAdapter, self).setUp()
         self._setup_xml_adapter()
-        
 
 
 class TestXMLPermissionsAdapter(PermissionsAdapterTester,
-                                BaseXmlAdapterTester):
+                                _BaseXmlAdapterTester):
     
     filename = 'permissions.xml'
     

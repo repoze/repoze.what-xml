@@ -25,11 +25,8 @@ __all__ = ['XMLGroupsAdapter', 'XMLPermissionsAdapter']
 class _BaseXMLAdapter(BaseSourceAdapter):
     
     def __init__(self, file, **kwargs):
-        if hasattr(file, 'write'):
-            self.writer = file
-        else:
-            self.writer = open(file, 'r+')
-        self.document = parse(self.writer)
+        self.file = file
+        self.document = parse(file)
         self.is_writable = True
         super(_BaseXMLAdapter, self).__init__(**kwargs)
         # The translations:
@@ -118,7 +115,13 @@ class _BaseXMLAdapter(BaseSourceAdapter):
                 return section
     
     def _save(self):
-        self.document.writexml(self.writer)
+        if hasattr(self.file, 'write'):
+            writer = self.file
+        else:
+            writer = open(self.file, 'w')
+        # The Node.writexml() method generates ugly output, that's why we do it
+        # this way
+        writer.write(self.document.toprettyxml(encoding='utf-8'))
 
 
 class XMLGroupsAdapter(_BaseXMLAdapter):
