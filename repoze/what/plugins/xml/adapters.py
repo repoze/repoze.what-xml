@@ -133,7 +133,47 @@ class _BaseXMLAdapter(BaseSourceAdapter):
 
 
 class XMLGroupsAdapter(_BaseXMLAdapter):
-    """The XML group source adapter"""
+    """
+    The XML group source adapter.
+    
+    The ``file`` is the path to the XML-based group source or the :class:`file`
+    object for such a file.
+    
+    Additional arguments will be passed to 
+    :class:`repoze.what.adapters.BaseSourceAdapter`.
+    
+    For example, if we have the following XML-based group source:
+    
+    .. code-block:: xml
+    
+        <?xml version="1.0" encoding="UTF-8"?>
+        <groups>
+            <group name="admins">
+                <member name="rms" />
+            </group>
+            <group name="developers">
+                <member name="rms" />
+                <member name="linus" />
+            </group>
+            <group name="trolls">
+                <member name="sballmer" />
+            </group>
+            <group name="python">
+                <!-- An empty group -->
+            </group>
+            <group name="php">
+                <!-- An empty group -->
+            </group>
+        </groups>
+    
+    Then we can use its adapter like this::
+    
+        >>> from repoze.what.plugins.xml.adapters import XMLGroupsAdapter
+        >>> groups = XMLGroupsAdapter('tests/fixture/groups.xml')
+        >>> groups.get_section_items('developers')
+        set([u'rms', u'linus'])
+    
+    """
     
     elements = {
         'section': 'group',
@@ -147,7 +187,41 @@ class XMLGroupsAdapter(_BaseXMLAdapter):
 
 
 class XMLPermissionsAdapter(_BaseXMLAdapter):
-    """The XML permission source adapter"""
+    """
+    The XML permission source adapter.
+    
+    The ``file`` is the path to the XML-based permission source or the 
+    :class:`file` object for such a file.
+    
+    Additional arguments will be passed to 
+    :class:`repoze.what.adapters.BaseSourceAdapter`.
+    
+    For example, if we have the following XML-based permission source:
+
+        .. code-block:: xml
+        
+            <?xml version="1.0" encoding="UTF-8"?>
+            <permissions>
+                <permission name="edit-site">
+                    <group name="admins" />
+                    <group name="developers" />
+                </permission>
+                <permission name="commit">
+                    <group name="developers" />
+                </permission>
+                <permission name="see-site">
+                    <group name="trolls" />
+                </permission>
+            </permissions>
+    
+    Then we can use its adapter like this:
+    
+        >>> from repoze.what.plugins.xml.adapters import XMLPermissionsAdapter
+        >>> permissions = XMLPermissionsAdapter('tests/fixture/permissions.xml')
+        >>> permissions.get_section_items('edit-site')
+        set([u'admins', u'developers'])
+    
+    """
     
     elements = {
         'section': 'permission',
