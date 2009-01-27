@@ -1,6 +1,6 @@
-*********************************
-The :mod:`repoze.what` XML plugin
-*********************************
+**************************
+The repoze.what XML plugin
+**************************
 
 This is an adapters plugin for repoze.what.
 
