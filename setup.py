@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2007, Agendaless Consulting and Contributors.
-# Copyright (c) 2008, Florent Aide <florent.aide@gmail.com> and
-#                     Gustavo Narea <me@gustavonarea.net>
+# Copyright (c) 2008-2009, Gustavo Narea <me@gustavonarea.net>
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the BSD-like license at
@@ -11,7 +9,7 @@
 # this distribution.  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL
 # EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO,
 # THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND
-# FITNESS FOR A PARTICULAR PURPOSE
+# FITNESS FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
 
@@ -30,10 +28,14 @@ setup(name='repoze.what.plugins.xml',
       classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Topic :: Internet :: WWW/HTTP :: WSGI",
+        "Topic :: Security"
         "Topic :: Text Processing :: Markup :: XML",
         ],
-      keywords='web application server wsgi xml',
+      keywords='web application server wsgi xml authorization repoze',
       author="Gustavo Narea",
       author_email="repoze-dev@lists.repoze.org",
       namespace_packages = ['repoze', 'repoze.what', 'repoze.what.plugins'],
@@ -43,7 +45,7 @@ setup(name='repoze.what.plugins.xml',
       include_package_data=True,
       zip_safe=False,
       tests_require=['repoze.what', 'coverage', 'nose'],
-      install_requires=['repoze.what >= 1.0rc1-r2803'],
+      install_requires=['repoze.what >= 1.0.1'],
       test_suite="nose.collector",
       entry_points = """\
       """
