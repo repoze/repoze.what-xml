@@ -32,7 +32,7 @@ setup(name='repoze.what.plugins.xml',
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Topic :: Internet :: WWW/HTTP :: WSGI",
-        "Topic :: Security"
+        "Topic :: Security",
         "Topic :: Text Processing :: Markup :: XML",
         ],
       keywords='web application server wsgi xml authorization repoze',
