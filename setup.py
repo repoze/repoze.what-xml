@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2008-2009, Gustavo Narea <me@gustavonarea.net>
+# Copyright (c) 2008-2009, 2011, Gustavo Narea <me@gustavonarea.net>
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the BSD-like license at
@@ -39,7 +39,7 @@ setup(name='repoze.what.plugins.xml',
       author="Gustavo Narea",
       author_email="repoze-dev@lists.repoze.org",
       namespace_packages = ['repoze', 'repoze.what', 'repoze.what.plugins'],
-      url="http://code.gustavonarea.net/repoze.what.plugins.xml/",
+      url="http://what.repoze.org/docs/plugins/xml/",
       license="BSD-derived (http://www.repoze.org/LICENSE.txt)",
       packages=find_packages(),
       include_package_data=True,
